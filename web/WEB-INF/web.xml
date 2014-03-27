@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<listener>
+		<listener-class>edu.cornell.mannlib.oce.startup.StartupListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>FakeLoginFilter</filter-name>
+		<filter-class>edu.cornell.mannlib.oce.filters.FakeLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FakeLoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>MainController</servlet-name>
+		<servlet-class>edu.cornell.mannlib.oce.servlets.MainController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainController</servlet-name>
+		<url-pattern>/main/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MainController</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
