@@ -3,6 +3,7 @@
 package edu.cornell.mannlib.oce.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +23,10 @@ public class MainController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		log.warn("MainController.doGet() not implemented.");
-		resp.getWriter().println(
-				"<h1>MainController.doGet() not implemented.</h1>");
+		PrintWriter writer = resp.getWriter();
+		writer.println("<h1>MainController.doGet() not implemented.</h1>");
+		writer.println("<h2>Logged in as " + req.getHeader("LOGIN_ID")
+				+ ".</h2>");
 	}
 
 }
