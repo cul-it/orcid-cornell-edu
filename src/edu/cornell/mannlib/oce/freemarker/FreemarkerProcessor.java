@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,26 +25,29 @@ import freemarker.template.TemplateException;
 public class FreemarkerProcessor {
 	private static final Log log = LogFactory.getLog(FreemarkerProcessor.class);
 
+	private final HttpServletResponse resp;
 	private final Configuration configuration;
 
-	public FreemarkerProcessor(HttpServletRequest req) {
-		ServletContext ctx = req.getSession().getServletContext();
-		configuration = (Configuration) ctx
+	public FreemarkerProcessor(HttpServletRequest req, HttpServletResponse resp) {
+		this.resp = resp;
+		this.configuration = (Configuration) req.getSession()
+				.getServletContext()
 				.getAttribute(FreemarkerSetup.ATTRIBUTE_NAME);
 	}
 
-	public String renderTemplate(String templateName, Map<String, Object> map)
-			throws TemplateProcessingException {
+	public void renderTemplate(String templateName, Map<String, Object> map)
+			throws IOException {
 		Template template = getTemplate(templateName);
-		return processTemplate(template, map);
+		String html = processTemplate(template, map);
+		resp.setContentType("text/html");
+		resp.getWriter().print(html);
 	}
 
 	/**
 	 * Fetch this template from a file and parse it. If there are any problems,
 	 * return "null".
 	 */
-	private Template getTemplate(String templateName)
-			throws TemplateProcessingException {
+	private Template getTemplate(String templateName) {
 		Template template = null;
 		try {
 			template = configuration.getTemplate(templateName);
@@ -61,9 +64,7 @@ public class FreemarkerProcessor {
 		return template;
 	}
 
-	private String processTemplate(Template template, Map<String, Object> map)
-			throws TemplateProcessingException {
-
+	private String processTemplate(Template template, Map<String, Object> map) {
 		StringWriter writer = new StringWriter();
 		try {
 			template.process(map, writer);

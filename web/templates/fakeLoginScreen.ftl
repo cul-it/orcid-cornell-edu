@@ -4,9 +4,8 @@
 
 <h1>Fake Login Screen</h1>
 
-<form action="main">
-  <input type="hidden" name="loginId" value="cmy8" />
-  <p>Login as Carl Yastrzemski.</p>
-  <input type="submit" value="Login" />
-</form>
+<img src="images/fakeLoginImage.png" />
 
+<div>
+   <a href="main?loginId=cmy8">Login as Carl Yastrzemski.</a>
+</div>

@@ -33,8 +33,10 @@ public class FakeLoginFilter implements Filter {
 	private static final String ATTRIBUTE_LOGIN_ID = FakeLoginFilter.class
 			.getName() + "_loginId";
 	private static final String PARAMETER_LOGIN_ID = "loginId";
-	
-	private static final Map<String, Object> EMPTY_BODY_MAP = Collections.emptyMap();
+	private static final String HEADER_NAME = "LOGIN_ID";
+
+	private static final Map<String, Object> EMPTY_BODY_MAP = Collections
+			.emptyMap();
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
@@ -52,7 +54,9 @@ public class FakeLoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) rawReq;
 		HttpServletResponse resp = (HttpServletResponse) rawResp;
 
-		if (isLoggedIn(req)) {
+		if (isImageRequest(req)) {
+			chain.doFilter(req, resp);
+		} else if (isLoggedIn(req)) {
 			chain.doFilter(new LoggedInRequest(req), resp);
 		} else if (isLoggingIn(req)) {
 			acceptLoginInfo(req);
@@ -60,6 +64,10 @@ public class FakeLoginFilter implements Filter {
 		} else {
 			sendToLoginScreen(req, resp);
 		}
+	}
+
+	private boolean isImageRequest(HttpServletRequest req) {
+		return req.getRequestURI().endsWith(".png");
 	}
 
 	private boolean isLoggedIn(HttpServletRequest req) {
@@ -77,18 +85,14 @@ public class FakeLoginFilter implements Filter {
 
 	private void sendToLoginScreen(HttpServletRequest req,
 			HttpServletResponse resp) throws IOException {
-		String html = new FreemarkerProcessor(req).renderTemplate(
+		new FreemarkerProcessor(req, resp).renderTemplate(
 				"fakeLoginScreen.ftl", EMPTY_BODY_MAP);
-
-		resp.setContentType("text/html");
-		resp.getWriter().print(html);
 	}
 
 	/**
 	 * This request pretends that it has an additional HTTP Header.
 	 */
 	private class LoggedInRequest extends HttpServletRequestWrapper {
-		private final static String HEADER_NAME = "LOGIN_ID";
 		private final String loginId;
 
 		public LoggedInRequest(HttpServletRequest req) {
