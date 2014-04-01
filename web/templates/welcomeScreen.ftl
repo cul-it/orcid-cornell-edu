@@ -15,6 +15,7 @@ table {
 
 td {
    border: 2px solid black;
+   vertical-align: top;
 }
 
 .half {
@@ -22,11 +23,33 @@ td {
 }
 
 div {
-   margin: 5px;
+   margin: 10px;
+}
+
+div.example {
+   text-align: center;
+}
+
+div.example img {
+   width: 300px;
+   border: 4px groove grey;
+}
+
+div.logos img {
+   vertical-align: middle;
+}
+
+form p {
+   text-align: center;
 }
 
 </style>
 
+
+<div class="logos">
+   <img src="images/cu_logo_unstyled.gif" />
+   <img src="images/orcid-logo.png"/>
+</div>
 
 <h1>Cornell ORCID portal</h1>
 
@@ -38,26 +61,41 @@ div {
 </div>
 
 <div>
-   <p>When you click on the <b>START</b> button...</p>
+   <p>When you click on the <b>BEGIN</b> button...</p>
 </div>
 
 <table>
-  <td class="half">
-     <h2>If you already have an ORCID account</h2>
-     <div>Sign in when you see the ORCID login page.</div>
-  </td>
-  <td>
-     <h2>If you do not have an ORCID account</h2>
-     <div>When you see the ORCID login page, click on "Register for an ORCID iD". Then complete the registration form.</div>
-  </td>
+   <tr>
+      <td class="half">
+         <h2>If you have an ORCID account</h2>
+         <div>Sign in when you see the ORCID login page.</div>
+         <div class="example"><img src="images/orcidSignup.png" /></div>
+      </td>
+      <td>
+         <h2>If you do not have an ORCID account</h2>
+         <div>When you see the ORCID login page, click on "Register for an ORCID iD". Then complete the registration form.</div>
+         <div class="example"><img src="images/orcidRegister.png" /></div>
+      </td>
+   </tr>
+   <tr>
+      <td colspan="2">
+         <h2>If you don't know whether you have an ORCID account</h2>
+         <div>
+            When you see the ORCID login page, 
+            click in the <i>Search</i> field at the top of the page, 
+            and search for your name in the ORCID registry.
+         </div>
+         <div class="example"><img src="images/orcidSearch.png" /></div>
+      </td>
+   </tr>
 </table>
 
-<div>ORCID will ask you to authorize Cornell to retrieve your ORCID ID. Click on "Allow"</div> 
+<div>ORCID will ask you to authorize Cornell to retrieve your ORCID ID. Click on "Authorize"</div> 
 
-<div>That's all. Your ORCID ID will be written to our registry, so we can follow your public achievements!</div>
+<div>That's all. Your ORCID ID will be written to our registry.</div>
 
 <form action="main/process">
    <p>Ready?</p> 
-   <p><input type="submit" value="START" /></p>
+   <p><input type="submit" value="BEGIN" /></p>
 </form>
 

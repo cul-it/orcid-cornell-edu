@@ -67,7 +67,7 @@ public class FakeLoginFilter implements Filter {
 	}
 
 	private boolean isImageRequest(HttpServletRequest req) {
-		return req.getRequestURI().endsWith(".png");
+		return req.getRequestURI().indexOf("images/") >= 0;
 	}
 
 	private boolean isLoggedIn(HttpServletRequest req) {
