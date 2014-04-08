@@ -47,11 +47,11 @@ form p {
 
 
 <div class="logos">
-   <img src="images/cu_logo_unstyled.gif" />
-   <img src="images/orcid-logo.png"/>
+   <img src="images/cu-logo.gif" />
+   
 </div>
 
-<h1>Cornell ORCID portal</h1>
+<h1>Cornell / <img src="images/orcid-logo.png"/>Portal</h1>
 
 <div>
    <p>
