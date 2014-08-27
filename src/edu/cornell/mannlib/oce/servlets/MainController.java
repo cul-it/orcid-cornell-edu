@@ -205,6 +205,7 @@ class MainControllerCore {
 		map.put("loginId", loginId);
 		map.put("result", String.valueOf(result));
 		map.put("orcidId", String.valueOf(orcidId));
+		map.put("baseUrl", occ.getSetting(Setting.WEBAPP_BASE_URL));
 		new FreemarkerProcessor(req, resp).renderTemplate(templateName, map);
 	}
 
