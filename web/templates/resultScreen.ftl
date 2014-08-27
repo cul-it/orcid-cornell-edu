@@ -16,7 +16,8 @@ The body map contains these values:
 <html lang="en">
     <head>
 		<meta charset="utf-8" />
-
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Local css file -->
 		<link rel="stylesheet" href="${baseUrl}/css/orcid-cornell-edu.css">
 	</head>

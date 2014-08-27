@@ -14,8 +14,6 @@ The body map contains this value:
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Local css file -->
 		<link rel="stylesheet" href="${baseUrl}css/orcid-cornell-edu.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<section class="banner">
