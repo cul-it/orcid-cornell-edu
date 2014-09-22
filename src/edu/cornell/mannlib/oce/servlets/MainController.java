@@ -8,8 +8,11 @@ import static javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +51,7 @@ class MainControllerCore {
 	private static final String PATHINFO_PROCESS = "/process";
 	private static final String PATH_PROCESS = "main" + PATHINFO_PROCESS;
 	private static final String PATHINFO_CALLBACK = "/callback";
-	private static final String HEADER_NAME = "LOGIN_ID";
+	private static final String HEADER_NAME = "REMOTE_USER";
 
 	private enum Result {
 		SUCCESS, FAILED, DENIED
@@ -163,7 +166,24 @@ class MainControllerCore {
 
 	private void showNotLoggedIn() throws IOException {
 		log.error("Not logged in! How did CUWebAuth let us through?");
+		log.error("Headers are: " + buildHeaderMap());
 		resp.sendError(SC_FORBIDDEN);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Map<String, Set<String>> buildHeaderMap() {
+		Map<String, Set<String>> headerMap = new HashMap<>();
+		for (Enumeration<String> names = req.getHeaderNames(); names
+				.hasMoreElements();) {
+			String name = names.nextElement();
+			Set<String> valueSet = new HashSet<>();
+			for (Enumeration<String> values = req.getHeaders(name); values
+					.hasMoreElements();) {
+				valueSet.add(values.nextElement());
+			}
+			headerMap.put(name, valueSet);
+		}
+		return headerMap;
 	}
 
 	private void showOrcidNotConfigured() throws IOException {
@@ -175,7 +195,7 @@ class MainControllerCore {
 	private void startFromScratch() {
 		authManager.clearStatus(AUTHENTICATE);
 	}
-	
+
 	private void showWelcomeScreen() throws IOException {
 		renderTemplate("welcomeScreen.ftl");
 	}
