@@ -225,8 +225,14 @@ class MainControllerCore {
 		map.put("loginId", loginId);
 		map.put("result", String.valueOf(result));
 		map.put("orcidId", String.valueOf(orcidId));
-		map.put("baseUrl", occ.getSetting(Setting.WEBAPP_BASE_URL));
+		map.put("baseUrl", figureBaseUrl());
 		new FreemarkerProcessor(req, resp).renderTemplate(templateName, map);
+	}
+
+	private String figureBaseUrl() {
+		String rawBaseUrl = occ.getSetting(Setting.WEBAPP_BASE_URL);
+		int colonHere = rawBaseUrl.indexOf(':');
+		return rawBaseUrl.substring(colonHere + 1);
 	}
 
 	private void successLogMessage() {
