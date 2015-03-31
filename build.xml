@@ -14,7 +14,7 @@
 	<property name="war.webinf.dir" location="${war.dir}/WEB-INF" />
 	<property name="war.classes.dir" location="${war.webinf.dir}/classes" />
 
-	<property name="tomcat.home" location="/Users/jeb228/Library/Tomcat" />
+	<property name="tomcat.home" location="/users/jeb228/ORCID/tomcat" />
 
 
 	<!-- ================================= 
