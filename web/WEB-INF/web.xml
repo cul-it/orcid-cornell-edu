@@ -19,7 +19,9 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<filter>
+<!-- This is not used in production, since we have CUWebAuth to do a real login. -->
+<!--
+    <filter>
 		<filter-name>FakeLoginFilter</filter-name>
 		<filter-class>edu.cornell.mannlib.oce.filters.FakeLoginFilter</filter-class>
 	</filter>
@@ -27,6 +29,7 @@
 		<filter-name>FakeLoginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+-->
 
 	<servlet>
 		<servlet-name>MainController</servlet-name>
