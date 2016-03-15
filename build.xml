@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- ====================================================================== 
-	 Build script for the orcid.cornell.edu webapp.
-	 ====================================================================== -->
+     Build script for the orcid.cornell.edu webapp.
+     ====================================================================== -->
 
 <project name="orcid_cornell_edu" default="describe">
 
@@ -14,15 +14,16 @@
 	<property name="war.webinf.dir" location="${war.dir}/WEB-INF" />
 	<property name="war.classes.dir" location="${war.webinf.dir}/classes" />
 
-	<property name="tomcat.home" location="/users/jeb228/ORCID/tomcat" />
-
+	<property name="tomcat.webapps" location="/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/webapps" />
+	<property name="tomcat.appname" value="ROOT" />
+	<!-- property name="tomcat.logdir" location="/cul/log/tomcat"  FIXME - should set here and pass to javac to get compiled into web/WEB-INF/classes/log4j.properties -->
 
 	<!-- ================================= 
-          target: describe              
-         ================================= -->
+             target: describe              
+             ================================= -->
 	<target name="describe"
 	        description="--> Describe the targets (this is the default).">
-		<echo>
+	    <echo>
 all      - Runs "clean", then "deploy".
 clean    - Delete all artifacts so the next build will be from scratch.
 compile  - Compile the Java source files.
@@ -31,7 +32,7 @@ deploy   - Deploy the application directly into the Tomcat webapps directory.
 	</target>
 
 	<!-- ================================= 
-              target: clean              
+             target: clean              
 	     ================================= -->
 	<target name="clean" description="--> Delete all artifacts.">
 		<delete dir="${build.dir}" />
@@ -61,7 +62,7 @@ deploy   - Deploy the application directly into the Tomcat webapps directory.
 	</target>
 
 	<!-- ================================= 
-              target: compile              
+             target: compile              
              ================================= -->
 	<target name="compile"
 	        depends="collect"
@@ -87,18 +88,18 @@ deploy   - Deploy the application directly into the Tomcat webapps directory.
 	<target name="deploy"
 	        depends="compile"
 	        description="--> Build the app and install in Tomcat">
-		<property name="webapp.deploy.home"
-		          value="${tomcat.home}/webapps/orcidCornellEdu" />
+		<property name="webapp.deploy"
+		          value="${tomcat.webapps}/${tomcat.appname}" />
 
-		<mkdir dir="${webapp.deploy.home}" />
-		<sync todir="${webapp.deploy.home}" includeemptydirs="true">
+		<mkdir dir="${webapp.deploy}" />
+		<sync todir="${webapp.deploy}" includeemptydirs="true">
 			<fileset dir="${war.dir}" />
 		</sync>
 	</target>
 
 	<!-- ================================= 
-          target: all              
-         ================================= -->
+             target: all              
+             ================================= -->
 	<target name="all"
 	        depends="clean, deploy"
 	        description="--> Clean, then deploy" />
