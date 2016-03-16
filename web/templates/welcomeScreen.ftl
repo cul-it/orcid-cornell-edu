@@ -1,7 +1,5 @@
-<#-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
-
-<#-- 
-Template for the Welcome screen. 
+<#--
+Template for the Welcome screen.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +7,7 @@ Template for the Welcome screen.
 		<meta charset="utf-8" />
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Local css file -->
 		<link rel="stylesheet" href="css/orcid-cornell-edu.css">
 	</head>
@@ -29,10 +27,7 @@ Template for the Welcome screen.
         		<img src="images/gray-arrow.png" height="36" width="80"/>
     		</div>
     		<div id="intro-text">
-        		<p>
-            		Welcome to the Cornell / ORCID portal! This web site will record your ORCID ID so your 
-            		department can keep up to date with the publications listed in your ORCID account.
-        		</p>
+        		<p>Welcome to the Cornell / ORCID portal. This web site will record your ORCID iD so Cornell can keep up to date with the publications listed in your ORCID record, or associated with your ORCID iD in systems used by publishers, funders, and other organizations.</p>
 				<p>When you click on the <b>BEGIN</b> button below....</p>
     		</div>
             <div class="row">
@@ -57,8 +52,7 @@ Template for the Welcome screen.
                 <div class="col-md-6">
                     <img src="images/orcid-form.png" alt="ORCID registration form" class="img-responsive">
                 </div>
-            </div>
-    		
+            </div>    		
 		</section>
 		<br />
 	</body>
