@@ -27,7 +27,7 @@ public class StartupListener implements ServletContextListener {
 	public static final String ATTRIBUTE_NAME = StartupListener.class.getName()
 			+ "/message";
 
-        private static final String PROPERTY_NAME = "oce-properties";
+        private static final String PROPERTY_NAME = "orcid-cornell-edu-properties";
 
 	private ServletContext ctx;
 	private Map<String, String> settings;
@@ -51,12 +51,11 @@ public class StartupListener implements ServletContextListener {
 	 * read it, and it must be a valid properties file.
 	 */
 	private void readSettings() throws IOException {
-	    /* String path = System.getProperty(PROPERTY_NAME);
+	        String path = System.getProperty(PROPERTY_NAME);
 		if (path == null) {
 			throw new IllegalStateException("No System property for '"
 					+ PROPERTY_NAME + "'");
-					} */
- 	        String path = "/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/conf/orcid-cornell-cornell-edu.properties";
+		}
 
 		File file = new File(path);
 		if (!file.exists()) {
