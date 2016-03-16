@@ -41,7 +41,7 @@ The body map contains these values:
         		<#elseif result == "DENIED">
             		<h2>Is there a problem?</h2>
             		<div>
-                		<p>The ORCID site tells us that you denied the requested authorization. If you like, you may <a href="..">start again</a>.</p>
+                		<p>The ORCID site tells us that you denied the requested authorization. If you like, you may <a href="..">start again</a>. For help, please contact <a href="mailto:orcid-help@cornell.edu">orcid-help@cornell.edu</a>.</p>
             		</div>
             		<div>
                 		<p>Note: You are already logged in to ORCID. You only need to grant authorization to complete the process.</p>
