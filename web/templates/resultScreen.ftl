@@ -1,14 +1,9 @@
-<#-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
-
 <#-- 
 Template for the result screen.
 
 The body map contains these values:
-
    loginId -- contains their Cornell NetID.  
-
    result -- contains one of these: "SUCCESS", "DENIED", "FAILED"
-
    orcidId -- If they completed successfully, contains their ORCID id (not the full URI)
               Otherwise, contains the word "null".
 -->
@@ -19,7 +14,7 @@ The body map contains these values:
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Local css file -->
-		<link rel="stylesheet" href="${baseUrl}/css/orcid-cornell-edu.css">
+		<link rel="stylesheet" href="css/orcid-cornell-edu.css">
 	</head>
 	<body>
 
@@ -29,13 +24,13 @@ The body map contains these values:
 		<section class="primary">
 			<h1>
     			<span>Cornell</span>
-				<img id="orcid-logo" src="${baseUrl}images/orcid-logo.png"/>
+				<img id="orcid-logo" src="images/orcid-logo.png"/>
 			</h1>
 			<div id="green-arrow">
-    			<img src="${baseUrl}images/green-arrow.png" height="46" width="80"/>
+    			<img src="images/green-arrow.png" height="46" width="80"/>
 			</div>
 			<div id="gray-arrow">
-    			<img src="${baseUrl}images/gray-arrow.png" height="36" width="80"/>
+    			<img src="images/gray-arrow.png" height="36" width="80"/>
 			</div>
     		<section class="result-status">
         		<#if result == "SUCCESS">
@@ -54,7 +49,7 @@ The body map contains these values:
         		<#else>
             		<h2>Something went wrong.</h2>
             		<div>
-                		<p>A problem occurred while recording your ORCID iD. Please try again later.</p>
+                		<p>A problem occurred while recording your ORCID iD. Please try again later. For help, please contact <a href="mailto:orcid-help@cornell.edu">orcid-help@cornell.edu</a>.</p>
             		</div>
             		<div>
                 		<p>Note: Regardless of the problem, your ORCID account is still active.</p>

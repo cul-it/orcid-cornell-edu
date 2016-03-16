@@ -1,6 +1,6 @@
-<#-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
-
-<#-- Template for the Fake login screen. -->
+<#--
+Template for the Fake login screen.
+-->
 
 <h1>Fake Login Screen</h1>
 
