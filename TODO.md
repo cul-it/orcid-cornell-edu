@@ -2,6 +2,11 @@
 
 Try at <https://new-orcid.library.cornell.edu/>
 
+For testing the new site as if it were at orcid.cornell.edi have to put entry in `/etc/hosts` of client machine like:
+```
+128.84.131.215  new-orcid.library.cornell.edu orcid.cornell.edu
+```
+
 ## Must fix
 
   * http should redirect to https -- DONE
