@@ -14,7 +14,7 @@ The body map contains these values:
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Local css file -->
-		<link rel="stylesheet" href="css/orcid-cornell-edu.css">
+		<link rel="stylesheet" href="/css/orcid-cornell-edu.css">
 	</head>
 	<body>
 
@@ -24,13 +24,13 @@ The body map contains these values:
 		<section class="primary">
 			<h1>
     			<span>Cornell</span>
-				<img id="orcid-logo" src="images/orcid-logo.png"/>
+				<img id="orcid-logo" src="/images/orcid-logo.png"/>
 			</h1>
 			<div id="green-arrow">
-    			<img src="images/green-arrow.png" height="46" width="80"/>
+    			<img src="/images/green-arrow.png" height="46" width="80"/>
 			</div>
 			<div id="gray-arrow">
-    			<img src="images/gray-arrow.png" height="36" width="80"/>
+    			<img src="/images/gray-arrow.png" height="36" width="80"/>
 			</div>
     		<section class="result-status">
         		<#if result == "SUCCESS">
