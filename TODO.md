@@ -9,11 +9,11 @@ For testing the new site as if it were at orcid.cornell.edi have to put entry in
 
 ## Must fix
 
-  * Need SSL Cert complete - Alan is waiting on this
-
-  * Have put in a request to ORCID to reguster the callback URI <https://orcid.cornell.edu/main/callback> so that we can set `WEBAPP_BASE_URL = https://orcid.cornell.edu/` in `orcid-cornell-cornell-edu.properties`
+* Have put in a request to ORCID to reguster the callback URI <https://orcid.cornell.edu/main/callback> so that we can set `WEBAPP_BASE_URL = https://orcid.cornell.edu/` in `orcid-cornell-cornell-edu.properties`
 
 ## Nice configuration
+
+  * check that we don't have any mixed content
 
   * where should the Success and Problem logs go? These are long-lived as they contain the actual data. Currently going to `/cul/log/tomcat`, will these get cleaned up automatically?
 
