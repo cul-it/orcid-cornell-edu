@@ -15,7 +15,7 @@ h2 {
     font-family: "Lucida Sans Unicode","Lucida Grande",Geneva,helvetica,sans-serif;
     color: #656;
 }
-p {
+p, li {
 	font-size: 16px;
 	text-align: left;
 	width: 85%;
@@ -75,7 +75,7 @@ div#searchTwo {
 }
 div#concluding-text {
 	clear:both;
-	padding:35px 0 10px 0;
+	padding:15px 0 10px 0;
 }
 div#rowTwo {
 	margin-top:50px
@@ -85,4 +85,24 @@ div#rowThree {
 }
 input#submit-this {
 	margin-left: 15px;
+}
+.help-text {
+	margin: 1em 0 3em 0;
+}
+.help-text form {
+	margin-bottom: 2.5em;
+}
+.badge {
+	background-color: #b31b1b;
+	font-size: 16px;
+}
+.arrow-list {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+.arrow-list li {
+	margin: 0 0 1.5em;
+	padding-left: 55px;
+	background: url(../images/arrow-bullet.png) no-repeat left top;
 }
