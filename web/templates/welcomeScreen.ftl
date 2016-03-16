@@ -39,7 +39,7 @@ Template for the Welcome screen.
                                 Visit <a href="http://orcid.org/">http://orcid.org/</a>, click in the SEARCH field at the top of the page, and search for your name in the ORCID registry.</li>
                     </ul>
                     <div id="concluding-text">
-                        <p>ORCID will ask you to authorize Cornell to retrieve your ORCID ID. Click on "Authorize." That's all &mdash; your ORCID ID will be written to our registry.</p>
+                        <p>ORCID will ask you to authorize Cornell to retrieve your ORCID iD. Click on "Authorize." That's all &mdash; your ORCID iD will be written to our registry.</p>
                     </div>
 
                     <form action="main/process">
