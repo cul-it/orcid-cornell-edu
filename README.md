@@ -23,8 +23,7 @@ The application is designed to run at <https://orcid.cornell.edu/> and the setti
 
 ### 2. Configure
 
-  * Edit directory settings in `build.xml`
-    * Key properties likely to need update for a new enviroment are `tomcat.webapps`, the directory for tomcat applications; and `tomcat.appname` which is currently `ROOT` to tie the app to the root path on the server:
+  * Edit directory settings in `build.xml`. The key properties likely to need update for a new enviroment are `tomcat.webapps`, the directory for tomcat applications; and `tomcat.appname` which is currently `ROOT` to tie the app to the root path on the server:
 
 ```
     <property name="tomcat.webapps" location="/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/webapps" />
@@ -39,8 +38,9 @@ log4j.appender.AllAppender.File=/cul/log/tomcat/orcid-cornell-edu.log
 log4j.appender.SuccessAppender.File=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data
 log4j.appender.ProblemAppender.File=/cul/log/tomcat/orcid-cornell-edu-PROBLEM.data
 ```
-    * The standard CUL-IT setup has all files in `/cul/log/tomcat` matching `*.log` and `*.out` getting rolled daily. By setting the name of the success and problem (deny) logs to have `.data` extensions we avoid those being rolled.
-    * It is possible to set overrides for the log directory settings in `/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/conf/orcid-cornell-edu.properties` using the `logfile.success` and `logfile.problem` properties. However, I don't know hot to adjust the root level logger in this way and the system will touch the filenames given in `web/WEB-INF/classes/log4j.properties` every time the app is started. 
+
+  * The standard CUL-IT setup has all files in `/cul/log/tomcat` matching `*.log` and `*.out` getting rolled daily. By setting the name of the success and problem (deny) logs to have `.data` extensions we avoid those being rolled.
+  * It is possible to set overrides for the log directory settings in `/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/conf/orcid-cornell-edu.properties` using the `logfile.success` and `logfile.problem` properties. However, I don't know hot to adjust the root level logger in this way and the system will touch the filenames given in `web/WEB-INF/classes/log4j.properties` every time the app is started. 
 
 ### 3. Compile/deploy
 
