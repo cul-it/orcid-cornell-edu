@@ -4,8 +4,10 @@ A simple web-app that will confirm and record ORCID IDs for Cornell members usin
 
 ## REQUIREMENTS
 
-  * Java - was written with 1.6
-  * Tomcat - 
+  * Java - was written with 1.6, installs find with 1.7
+  * Tomcat 
+  * CUWebAuth
+  * Appropriate SSL certs
 
 ## INSTALLATION
 
@@ -79,6 +81,9 @@ useful to watch the tomcat log:
 sw272@orcid-new ~>tail -10f /cul/log/tomcat/catalina.out
 ```
 
+### 5. Configuration notes
+
+See <./conf>.
 
  
 

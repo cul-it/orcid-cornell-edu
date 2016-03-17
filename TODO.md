@@ -2,20 +2,22 @@
 
 Try at <https://new-orcid.library.cornell.edu/>
 
-For testing the new site as if it were at orcid.cornell.edi have to put entry in `/etc/hosts` of client machine like:
+For testing the new site as if it were at orcid.cornell.edu have to put entry in `/etc/hosts` of client machine like:
 ```
 128.84.131.215  new-orcid.library.cornell.edu orcid.cornell.edu
 ```
 
 ## Must fix
 
-* Have put in a request to ORCID to reguster the callback URI <https://orcid.cornell.edu/main/callback> so that we can set `WEBAPP_BASE_URL = https://orcid.cornell.edu/` in `orcid-cornell-cornell-edu.properties`
+  * Need SSL Cert complete - Alan is waiting on this -- DONE
+
+  * Have put in a request to ORCID to reguster the callback URI <https://orcid.cornell.edu/main/callback> so that we can set `WEBAPP_BASE_URL = https://orcid.cornell.edu/` in `orcid-cornell-cornell-edu.properties` -- DONE
 
 ## Nice configuration
 
   * check that we don't have any mixed content
 
-  * where should the Success and Problem logs go? These are long-lived as they contain the actual data. Currently going to `/cul/log/tomcat`, will these get cleaned up automatically?
+  * where should the Success and Problem logs go? These are long-lived as they contain the actual data. Currently going to `/cul/log/tomcat`, will these get cleaned up automatically? Should document the log arrangement
 
 ```
 sw272@orcid-new orcid-cornell-edu>ls -l /cul/log/tomcat/
@@ -27,3 +29,6 @@ total 128
 -rw-rw-r-- 1 tomcat tomcat     0 Mar 15 18:05 orcid-cornell-edu-PROBLEM.log
 -rw-rw-r-- 1 tomcat tomcat     0 Mar 15 18:05 orcid-cornell-edu-SUCCESS.log
 ```
+
+  * Work out where to archive data, migrate old log data forward
+
