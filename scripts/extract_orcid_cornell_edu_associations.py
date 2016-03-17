@@ -3,13 +3,18 @@
 import optparse
 import logging
 import re
+import glob
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import Namespace, NamespaceManager, RDF
 
-def read_log(logfile):
-    """Read Success.log written by orcid.cornell.edu app, flag any errors or mismatches."""
+def read_log(logfile, assocs):
+    """Read Success.log written by orcid.cornell.edu app, flag any errors or mismatches.
+
+    Reads from logfile and adds new associations to assocs. Since data is accumulated in
+    assocs it makes most sense to read from a set of log files in the sequence they were
+    created, so that any warnings follow time sequence.
+    """
     fh = open(logfile,'r')
-    assocs = {}
     for line in fh:
         m =re.search(r'''result=SUCCESS, loginId=(\w+), orcidId=((\d\d\d\d-){3}\d\d\d[\dX])''',line)
         if (m):
@@ -21,8 +26,6 @@ def read_log(logfile):
             assocs[netid] = orcid
         else:
             logging.warn("Ignoring bad line %s"%(line))
-    return(assocs)
-
 
 def bind_namespace(ns_mgr, prefix, namespace):
     """Bind prefix to namespace in ns_mgr."""
@@ -43,13 +46,22 @@ def build_graph(assocs):
     return g
 
 p = optparse.OptionParser(description='Data extraction for orcid.cornell.edu')
+p.add_option('--old-success-logs', action='store', default=None,
+             help="Glob pattern for old success log files (default: %default)")
 p.add_option('--success-log', action='store', default='Success.log',
-             help="Input success log file (default: %default)")
+             help="Read success log file (default: %default)")
 p.add_option('--outfile', action='store', default='netid_orcid_associations.nt',
              help="Output ntriples file (default: %default)")
 (opts, args) = p.parse_args()
 
-assocs = read_log(opts.success_log)
+# Read all logs
+assocs = {}
+if (opts.old_success_logs):
+    for logfile in glob.glob(opts.old_success_logs):
+        read_log(logfile, assocs)
+read_log(opts.success_log, assocs)
+
+# Write data
 g = build_graph(assocs)
 fh = open(opts.outfile,'wb')
 fh.write(g.serialize(format='nt'))
