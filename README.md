@@ -4,7 +4,7 @@ A simple web-app that will confirm and record ORCID IDs for Cornell members usin
 
 ## REQUIREMENTS
 
-  * Java - was written with 1.6, installs find with 1.7
+  * Java - was written with 1.6, installs fine with 1.7
   * Tomcat 
   * CUWebAuth
   * Appropriate SSL certs
