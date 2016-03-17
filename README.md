@@ -97,3 +97,11 @@ MAILTO=sw272@cornell.edu
 # Read log and dump data at 11mins past hour
 11 * * * * /users/sw272/miniconda2/envs/py3/bin/python /users/sw272/orcid-cornell-edu/scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="/users/sw272/orcid-cornell-edu/data/*_success.data" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --outfile=/cul/data/orcid-cornell-edu/netid_orcid_associations.nt
 ```
+
+## GIT USE
+
+It is intended that branches will be used as follows:
+
+  * `master` - code running <https://orcid.cornell.edu/>
+  * `develop` - last stop for checks an testing, place for small changes
+  * other - larger changes for features etc.
