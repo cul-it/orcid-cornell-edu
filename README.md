@@ -83,16 +83,16 @@ sw272@orcid-new ~>tail -10f /cul/log/tomcat/catalina.out
 
 ### 5. Additional application configuration notes
 
-See <./conf>.
+See [conf](https://github.com/cul-it/orcid-cornell-edu/tree/develop/conf) notes.
 
 ### 6. Data dump setup on orcid.cornell.edu
 
-Decision is that data should not be publicly available. At present have a crontab set up that will read the long-term Success log and dump the data to `/users/sw272/orcid-cornell-edu/data/netid_orcid_associations.nt`:
+Decision is that data should not be publicly available. At present have a crontab set up that will read any historical logs in the `data` directory of this repository and the live success log, then dump the data to `/cul/data/orcid-cornell-edu/netid_orcid_associations.nt`. This is setup in crontab:
 
 ```
 # sw272's crontab on orcid.cornell.edu
 MAILTO=sw272@cornell.edu
 
 # Read log and dump data at 11mins past hour
-11 * * * * /users/sw272/miniconda2/envs/py3/bin/python /users/sw272/orcid-cornell-edu/scripts/extract_orcid_cornell_edu_associations.py --success-log /vivo/orcid-cornell-edu/files/Success.log --outfile /users/sw272/orcid-cornell-edu/data/netid_orcid_associations.nt
+11 * * * * /users/sw272/miniconda2/envs/py3/bin/python /users/sw272/orcid-cornell-edu/scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="/users/sw272/orcid-cornell-edu/data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.log --outfile=/cul/data/orcid-cornell-edu/netid_orcid_associations.nt
 ```
