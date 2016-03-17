@@ -34,12 +34,13 @@ The application is designed to run at <https://orcid.cornell.edu/> and the setti
   * Edit log directory settings in `web/WEB-INF/classes/log4j.properties`, e.g.
 
 ```
-sw272@orcid-new orcid-cornell-edu>egrep 'log4j\.appender\.\w+\.File=' web/WEB-INF/classes/log4j.properties
-log4j.appender.AllAppender.File= /cul/log/tomcat/orcid-cornell-edu.log
-log4j.appender.SuccessAppender.File= /cul/log/tomcat/orcid-cornell-edu-SUCCESS.log
-log4j.appender.ProblemAppender.File= /cul/log/tomcat/orcid-cornell-edu-PROBLEM.log
+(py3)sw272@orcid-new orcid-cornell-edu>grep File= web/WEB-INF/classes/log4j.properties
+log4j.appender.AllAppender.File=/cul/log/tomcat/orcid-cornell-edu.log
+log4j.appender.SuccessAppender.File=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data
+log4j.appender.ProblemAppender.File=/cul/log/tomcat/orcid-cornell-edu-PROBLEM.data
 ```
-  * FIXME -- these log directory settings should be set via something in `build.xml`
+    * The standard CUL-IT setup has all files in `/cul/log/tomcat` matching `*.log` and `*.out` getting rolled daily. By setting the name of the success and problem (deny) logs to have `.data` extensions we avoid those being rolled.
+    * It is possible to set overrides for the log directory settings in `/cul/app/tomcat/sf-lib-app-024.serverfarm.cornell.edu/conf/orcid-cornell-edu.properties` using the `logfile.success` and `logfile.problem` properties. However, I don't know hot to adjust the root level logger in this way and the system will touch the filenames given in `web/WEB-INF/classes/log4j.properties` every time the app is started. 
 
 ### 3. Compile/deploy
 
@@ -94,5 +95,5 @@ Decision is that data should not be publicly available. At present have a cronta
 MAILTO=sw272@cornell.edu
 
 # Read log and dump data at 11mins past hour
-11 * * * * /users/sw272/miniconda2/envs/py3/bin/python /users/sw272/orcid-cornell-edu/scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="/users/sw272/orcid-cornell-edu/data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.log --outfile=/cul/data/orcid-cornell-edu/netid_orcid_associations.nt
+11 * * * * /users/sw272/miniconda2/envs/py3/bin/python /users/sw272/orcid-cornell-edu/scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="/users/sw272/orcid-cornell-edu/data/*_success.data" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --outfile=/cul/data/orcid-cornell-edu/netid_orcid_associations.nt
 ```
