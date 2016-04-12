@@ -47,6 +47,7 @@ Template for the Welcome screen.
                             <input id="submit-this" class="btn btn-primary" type="submit" value="BEGIN"/>
                         </p> 
                     </form>
+		    <p><small>More about <a href="http://guides.library.cornell.edu/orcid">ORCID@Cornell</a>.</small></p>
                     <p><small>Need help? Contact <a href="mailto:orcid-help@cornell.edu">orcid-help@cornell.edu</a></small></p>
                 </div>
                 <div class="col-md-6">
