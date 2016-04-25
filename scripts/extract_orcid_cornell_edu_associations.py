@@ -31,7 +31,7 @@ def read_log(logfile, assocs, activity):
             # Have we seen this before, if so is it same or change?
             if (netid in assocs):
                 if (assocs[netid] != orcid):
-                    loggin.warn("Changed ORCID for %s: %s -> %s, taking last" % (netid,assocs[netid],orcid))
+                    logging.warn("Changed ORCID for %s: %s -> %s, taking last" % (netid,assocs[netid],orcid))
             else:
                 # Record only new netid as activity
                 activity[date] += 1
