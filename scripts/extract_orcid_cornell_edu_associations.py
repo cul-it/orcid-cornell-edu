@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Script to extract data from log produced by orcid.cornell.edu app."""
+import csv
 from datetime import datetime
 import optparse
 import logging
@@ -62,11 +63,16 @@ p.add_option('--old-success-logs', action='store', default=None,
              help="Glob pattern for old success log files (default: %default)")
 p.add_option('--success-log', action='store', default='Success.log',
              help="Read success log file (default: %default)")
-p.add_option('--outfile', action='store', default='netid_orcid_associations.nt',
-             help="Output ntriples file (default: %default)")
+p.add_option('--outfile', action='store', default='netid_orcid_associations.',
+             help="Output file (default base: %default)")
+p.add_option('--csv', action='store_true',
+             help="Write a CSV file of netid, ORCID-URI pairs instead "
+                  "of ntiples")
 p.add_option('--activity', action='store', default=None,
              help="Output file for activity data (default: %default)")
 (opts, args) = p.parse_args()
+if (opts.outfile == 'netid_orcid_associations.'):
+    opts.outfile += 'csv' if opts.csv else 'nt'
 
 # Read all logs
 assocs = {}
@@ -77,10 +83,18 @@ if (opts.old_success_logs):
 read_log(opts.success_log, assocs, activity)
 
 # Write data
-g = build_graph(assocs)
-fh = open(opts.outfile,'wb')
-fh.write(g.serialize(format='nt'))
-fh.close()
+if (opts.csv):
+    fh = open(opts.outfile,'w')
+    writer = csv.writer(fh)
+    for netid in sorted(assocs):
+        writer.writerow([netid, assocs[netid]])
+    fh.close()
+else:
+    # ntiples
+    fh = open(opts.outfile,'wb')
+    g = build_graph(assocs)
+    fh.write(g.serialize(format='nt'))
+    fh.close()
 
 # Write activity data if requested
 if (opts.activity):
