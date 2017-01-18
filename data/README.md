@@ -7,7 +7,7 @@ This directory contains historical logs of successful netid to ORCID iD associat
 It also contains a periodically updated copy of the processed data:
 
   * `netid_orcid_associations.nt` 
-  * `
+  * `netid_orcid_associations.csv`
 
 where the live version update by crontab is usually available via `scp` from:
 
@@ -16,14 +16,16 @@ where the live version update by crontab is usually available via `scp` from:
 The command to update processed data from ths historical logs and the current live log is:
 
 ```
-(py3)sw272@orcid orcid-cornell-edu>scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --outfile=data/netid_orcid_associations.nt 
+orcid-cornell-edu> scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --outfile=data/netid_orcid_associations.nt 
 
-(py3)sw272@orcid orcid-cornell-edu>scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --csv --outfile=data/netid_orcid_associations.csv
+orcid-cornell-edu> scripts/extract_orcid_cornell_edu_associations.py --old-success-logs="data/*_success.log" --success-log=/cul/log/tomcat/orcid-cornell-edu-SUCCESS.data --csv --outfile=data/netid_orcid_associations.csv
 
-(py3)sw272@orcid orcid-cornell-edu>wc -l data/netid_orcid_associations.nt
+orcid-cornell-edu> wc -l data/netid_orcid_associations.nt
 190 data/netid_orcid_associations.nt
-(py3)sw272@orcid orcid-cornell-edu>wc -l data/netid_orcid_associations.csv
+
+orcid-cornell-edu> wc -l data/netid_orcid_associations.csv
 189 data/netid_orcid_associations.csv
-(py3)sw272@orcid orcid-cornell-edu>date
+
+orcid-cornell-edu>date
 Fri Nov 18 16:14:54 EST 2016
 ```
